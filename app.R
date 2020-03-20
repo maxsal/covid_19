@@ -74,7 +74,7 @@ simplst <- left_join(simplst, simplst_deaths, by = c("country", "date")) %>%
   left_join(simplst_recovered, by = c("country", "date")) %>%
   filter(country %in% c("US", "China", "Korea, South", "Italy", "Iran",
                         "India", "Spain", "Germany", "France", "Switzerland",
-                        "United Kingdom")) %>%
+                        "United Kingdom", "Canada", "Mexico")) %>%
   mutate(
     country = as.factor(country),
     pop    = case_when(
@@ -88,7 +88,9 @@ simplst <- left_join(simplst, simplst_deaths, by = c("country", "date")) %>%
       country == "Germany" ~ 82790000,
       country == "France" ~ 66990000,
       country == "Switzerland" ~ 8570000,
-      country == "United Kingdom" ~ 66440000
+      country == "United Kingdom" ~ 66440000,
+      country == "Canada" ~ 37590000,
+      country == "Mexico" ~ 129200000
     )
   )
 
@@ -100,9 +102,12 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       p("This plot represents the cumulative number of confirmed COVID-19 cases by selected countries."),
-      a("\n JHU CSSE Source Data (Github)", target="_blank", href="https://github.com/CSSEGISandData/COVID-19"),
       br(),
-      a("\n JHU Interactive COVID-19 Map", target="_blank", href="https://coronavirus.jhu.edu/map.html"),
+      p("Source data: ", a("JHU CSSE Source Data (Github)", target="_blank", href="https://github.com/CSSEGISandData/COVID-19")),
+      br(),
+      p("Source code: ", a("Shiny app source code (Github)", target="_blank", href="https://github.com/maxsal/covid_19")),
+      br(),
+      p("Interactive map: ", a("\n JHU Interactive COVID-19 Map", target="_blank", href="https://coronavirus.jhu.edu/map.html")),
       
       dateRangeInput("dates",  h4("Date Range"), start = min(simplst$date), end = max(simplst$date)),
       checkboxGroupInput(inputId = "line",
