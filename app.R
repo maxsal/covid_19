@@ -102,12 +102,9 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       p("This plot represents the cumulative number of confirmed COVID-19 cases by selected countries."),
-      br(),
       p("Source data: ", a("JHU CSSE Source Data (Github)", target="_blank", href="https://github.com/CSSEGISandData/COVID-19")),
-      br(),
       p("Source code: ", a("Shiny app source code (Github)", target="_blank", href="https://github.com/maxsal/covid_19")),
-      br(),
-      p("Interactive map: ", a("\n JHU Interactive COVID-19 Map", target="_blank", href="https://coronavirus.jhu.edu/map.html")),
+      p("Interactive map: ", a("JHU Interactive COVID-19 Map", target="_blank", href="https://coronavirus.jhu.edu/map.html")),
       
       dateRangeInput("dates",  h4("Date Range"), start = min(simplst$date), end = max(simplst$date)),
       checkboxGroupInput(inputId = "line",
