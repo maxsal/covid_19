@@ -3,6 +3,7 @@ library(tidyverse)
 library(zoo)
 library(scales)
 library(glue)
+library(ggtext)
 library(showtext)
 font_add_google("Noto Serif", "Noto Serif")
 font_add_google("Lato", "Lato")
@@ -53,13 +54,14 @@ quick_plot_dt <- function(state, avg_date = "2020-07-01", accent = "#e00000") {
     labs(
       title    = glue("{state} Coronavirus\nCase Count"),
       subtitle = glue("Updated {format(max(d$date), '%B %e, %Y')}"),
-      y        = "new cases"
+      caption  = "**Data source:** JHU CSSE GitHub"
     ) +
     theme_minimal() +
     theme(
       text               = element_text(family = "Lato"),
       plot.title         = element_text(face = "bold", hjust = 0.5, family = "Noto Serif", size = 24),
       plot.subtitle      = element_text(hjust = 0.5, size = 10, color = accent),
+      plot.caption       = element_markdown(hjust = 0),
       axis.title.x       = element_blank(),
       axis.title.y       = element_blank(),
       axis.text.x        = element_text(hjust = 1),
