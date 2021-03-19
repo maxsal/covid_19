@@ -51,7 +51,7 @@ quick_plot_dt <- function(state, avg_date = "2020-07-01", accent = "#e00000") {
     scale_x_date() +
     scale_y_continuous(labels = comma) +
     labs(
-      title    = glue("{state} Coronavirus Map\nand Case Count"),
+      title    = glue("{state} Coronavirus\nCase Count"),
       subtitle = glue("Updated {format(max(d$date), '%B %e, %Y')}"),
       y        = "new cases"
     ) +
@@ -70,3 +70,4 @@ quick_plot_dt <- function(state, avg_date = "2020-07-01", accent = "#e00000") {
 }
 
 quick_plot_dt(state = "Michigan")
+ggsave("~/Downloads/michigan_incidence.png", width = 7, height = 5, units = "in", dpi = "retina")
