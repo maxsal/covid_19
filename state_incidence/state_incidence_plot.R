@@ -62,12 +62,12 @@ quick_plot <- function(state, avg_date = "2020-07-01", accent = "#e00000") {
     ) +
     theme_minimal() +
     theme(
-      text = element_text(family = "Lato"),
-      plot.title = element_text(face = "bold", hjust = 0.5, family = "Noto Serif", size = 24),
-      plot.subtitle = element_text(hjust = 0.5, size = 10, color = accent),
-      axis.title.x = element_blank(),
-      axis.title.y = element_blank(),
-      axis.text.x = element_text(hjust = 1),
+      text               = element_text(family = "Lato"),
+      plot.title         = element_text(face = "bold", hjust = 0.5, family = "Noto Serif", size = 24),
+      plot.subtitle      = element_text(hjust = 0.5, size = 10, color = accent),
+      axis.title.x       = element_blank(),
+      axis.title.y       = element_blank(),
+      axis.text.x        = element_text(hjust = 1),
       panel.grid.minor.x = element_blank(),
       panel.grid.minor.y = element_blank(),
       panel.grid.major.x = element_blank()
